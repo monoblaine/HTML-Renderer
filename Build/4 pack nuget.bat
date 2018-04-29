@@ -7,6 +7,8 @@ echo - Get version...
 for /f %%i in ('getVer.exe ..\Source\SharedAssemblyInfo.cs') do set version=%%i
 echo Version: %version%
 
+set version=1.5.1-beta3
+
 echo.
 echo.
 echo - Pack NuGets...
