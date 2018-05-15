@@ -564,7 +564,17 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                         break;
                     default:
                         //case: baseline
-                        lineBox.SetBaseLine(g, box, baseline);
+                        var diff = lineBox.OwnerBox.ActualFont.UnderlineOffset - box.ActualFont.UnderlineOffset;
+
+                        if (diff > 0) {
+                            var tempBox = lineBox.Rectangles[box];
+
+                            tempBox.Y += diff;
+
+                            lineBox.Rectangles[box] = tempBox;
+                        }
+
+                        lineBox.SetBaseLine(g, box, baseline + Math.Max(diff, 0));
                         break;
                 }
             }
