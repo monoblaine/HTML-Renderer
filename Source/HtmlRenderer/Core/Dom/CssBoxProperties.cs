@@ -544,7 +544,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                 _lineHeight = string.Format(
                     NumberFormatInfo.InvariantInfo,
                     "{0}px",
-                    Double.TryParse(value, NumberStyles.AllowDecimalPoint | NumberStyles.Integer, CultureInfo.InvariantCulture, out var val)
+                    Double.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out var val)
                         ? CssValueParser.ParseLength((val * ActualFont.Size).ToString(CultureInfo.InvariantCulture), Size.Height, this, CssConstants.Pt)
                         : CssValueParser.ParseLength(value, Size.Height, this, CssConstants.Em)
                 );
