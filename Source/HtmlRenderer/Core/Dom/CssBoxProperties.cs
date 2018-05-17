@@ -984,7 +984,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                     _actualBorderTopWidth = CssValueParser.GetActualBorderWidth(BorderTopWidth, this);
                     if (string.IsNullOrEmpty(BorderTopStyle) || BorderTopStyle == CssConstants.None)
                     {
-                        _actualBorderTopWidth = 0f;
+                        _actualBorderTopWidth = 0.0;
                     }
                 }
                 return _actualBorderTopWidth;
@@ -1003,7 +1003,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                     _actualBorderLeftWidth = CssValueParser.GetActualBorderWidth(BorderLeftWidth, this);
                     if (string.IsNullOrEmpty(BorderLeftStyle) || BorderLeftStyle == CssConstants.None)
                     {
-                        _actualBorderLeftWidth = 0f;
+                        _actualBorderLeftWidth = 0.0;
                     }
                 }
                 return _actualBorderLeftWidth;
@@ -1022,7 +1022,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                     _actualBorderBottomWidth = CssValueParser.GetActualBorderWidth(BorderBottomWidth, this);
                     if (string.IsNullOrEmpty(BorderBottomStyle) || BorderBottomStyle == CssConstants.None)
                     {
-                        _actualBorderBottomWidth = 0f;
+                        _actualBorderBottomWidth = 0.0;
                     }
                 }
                 return _actualBorderBottomWidth;
@@ -1041,7 +1041,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                     _actualBorderRightWidth = CssValueParser.GetActualBorderWidth(BorderRightWidth, this);
                     if (string.IsNullOrEmpty(BorderRightStyle) || BorderRightStyle == CssConstants.None)
                     {
-                        _actualBorderRightWidth = 0f;
+                        _actualBorderRightWidth = 0.0;
                     }
                 }
                 return _actualBorderRightWidth;
@@ -1177,7 +1177,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// </summary>
         public bool IsRounded
         {
-            get { return ActualCornerNe > 0f || ActualCornerNw > 0f || ActualCornerSe > 0f || ActualCornerSw > 0f; }
+            get { return ActualCornerNe > 0.0 || ActualCornerNw > 0.0 || ActualCornerSe > 0.0 || ActualCornerSw > 0.0; }
         }
 
         /// <summary>
@@ -1245,7 +1245,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
             {
                 if (double.IsNaN(_actualBackgroundGradientAngle))
                 {
-                    _actualBackgroundGradientAngle = CssValueParser.ParseNumber(BackgroundGradientAngle, 360f);
+                    _actualBackgroundGradientAngle = CssValueParser.ParseNumber(BackgroundGradientAngle, 360.0);
                 }
 
                 return _actualBackgroundGradientAngle;
@@ -1330,7 +1330,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                             break;
                     }
 
-                    if (fsize <= 1f)
+                    if (fsize <= 1.0)
                     {
                         fsize = CssConstants.FontSize;
                     }
@@ -1352,7 +1352,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
             {
                 if (double.IsNaN(_actualLineHeight))
                 {
-                    _actualLineHeight = .9f * CssValueParser.ParseLength(LineHeight, Size.Height, this);
+                    _actualLineHeight = .9 * CssValueParser.ParseLength(LineHeight, Size.Height, this);
                 }
                 return _actualLineHeight;
             }

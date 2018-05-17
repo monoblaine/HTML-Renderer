@@ -364,7 +364,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// <param name="availCellSpace"></param>
         private void DetermineMissingColumnWidths(double availCellSpace)
         {
-            double occupedSpace = 0f;
+            double occupedSpace = 0.0;
             if (_widthSpecified) //If a width was specified,
             {
                 //Assign NaNs equally with space left after gathering not-NaNs
@@ -482,7 +482,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                 while (!CanReduceWidth(curCol))
                     curCol++;
 
-                _columnWidths[curCol] -= 1f;
+                _columnWidths[curCol] -= 1.0;
 
                 curCol++;
 
@@ -514,7 +514,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                         for (int a = 0; a < 15 && maxWidth < widthSum - 0.1; a++) // limit iteration so bug won't create infinite loop
                         {
                             int nonMaxedColumns = 0;
-                            double largeWidth = 0f, secLargeWidth = 0f;
+                            double largeWidth = 0.0, secLargeWidth = 0.0;
                             for (int i = 0; i < _columnWidths.Length; i++)
                             {
                                 if (_columnWidths[i] > largeWidth + 0.1)
@@ -610,7 +610,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
             double starty = Math.Max(_tableBox.ClientTop + GetVerticalSpacing(), 0);
             double cury = starty;
             double maxRight = startx;
-            double maxBottom = 0f;
+            double maxBottom = 0.0;
             int currentrow = 0;
 
             // change start X by if the table should align to center or right
@@ -641,7 +641,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                     var columnIndex = GetCellRealColumnIndex(row, cell);
                     double width = GetCellWidth(columnIndex, cell);
                     cell.Location = new RPoint(curx, cury);
-                    cell.Size = new RSize(width, 0f);
+                    cell.Size = new RSize(width, 0.0);
                     cell.PerformLayout(g); //That will automatically set the bottom of the cell
 
                     //Alter max bottom only if row is cell's row + cell's rowspan - 1
@@ -715,7 +715,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// </summary>
         private double GetSpannedMinWidth(CssBox row, CssBox cell, int realcolindex, int colspan)
         {
-            double w = 0f;
+            double w = 0.0;
             for (int i = realcolindex; i < row.Boxes.Count || i < realcolindex + colspan - 1; i++)
             {
                 if (i < GetColumnMinWidths().Length)
@@ -753,7 +753,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         private double GetCellWidth(int column, CssBox b)
         {
             double colspan = Convert.ToSingle(GetColSpan(b));
-            double sum = 0f;
+            double sum = 0.0;
 
             for (int i = column; i < column + colspan; i++)
             {
@@ -894,7 +894,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
             }
             else
             {
-                return 9999f;
+                return 9999.0;
             }
         }
 
@@ -954,7 +954,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// <returns></returns>
         private double GetWidthSum()
         {
-            double f = 0f;
+            double f = 0.0;
 
             foreach (double t in _columnWidths)
             {
@@ -1015,7 +1015,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// </summary>
         private double GetHorizontalSpacing()
         {
-            return _tableBox.BorderCollapse == CssConstants.Collapse ? -1f : _tableBox.ActualBorderSpacingHorizontal;
+            return _tableBox.BorderCollapse == CssConstants.Collapse ? -1.0 : _tableBox.ActualBorderSpacingHorizontal;
         }
 
         /// <summary>
@@ -1023,7 +1023,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// </summary>
         private static double GetHorizontalSpacing(CssBox box)
         {
-            return box.BorderCollapse == CssConstants.Collapse ? -1f : box.ActualBorderSpacingHorizontal;
+            return box.BorderCollapse == CssConstants.Collapse ? -1.0 : box.ActualBorderSpacingHorizontal;
         }
 
         /// <summary>
@@ -1031,7 +1031,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// </summary>
         private double GetVerticalSpacing()
         {
-            return _tableBox.BorderCollapse == CssConstants.Collapse ? -1f : _tableBox.ActualBorderSpacingVertical;
+            return _tableBox.BorderCollapse == CssConstants.Collapse ? -1.0 : _tableBox.ActualBorderSpacingVertical;
         }
 
         #endregion
