@@ -224,14 +224,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Parse
                     factor = 96.0; //96 pixels per inch
                     break;
                 case CssConstants.Pt:
-                    factor = 96.0 / 72.0; // 1 point = 1/72 of inch
-
-                    if (returnPoints)
-                    {
-                        return ParseNumber(number, hundredPercent);
-                    }
-
-                    break;
+                    return ParseNumber(number, hundredPercent) / (returnPoints ? 1.0 : (72.0 / 96.0));
                 case CssConstants.Pc:
                     factor = 16.0; // 1 pica = 12 points
                     break;
